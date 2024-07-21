@@ -20,7 +20,7 @@ const CalendarPage = ({ userData, updateUserData }) => {
     setError(null);
     try {
       const response = await fetch(
-        "https://on-request-example-qkx6eeyghq-uc.a.run.app",
+        "http://127.0.0.1:5000/check_freetime_events",
         {
           method: "GET",
           headers: {
@@ -31,9 +31,20 @@ const CalendarPage = ({ userData, updateUserData }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.text();
-      setResult(data);
+      const data = await response.json(); // Assuming the server returns JSON
+      setResult(JSON.stringify(data, null, 2));
       console.log("Response:", data);
+
+      // Parse the received data and update the calendar
+      if (Array.isArray(data)) {
+        const formattedEvents = data.map((event) => ({
+          start: new Date(event.start),
+          end: new Date(event.end),
+          title: event.title || "Free Time",
+        }));
+        setAvailableDates(formattedEvents);
+        updateUserData("calendar", { availableDates: formattedEvents });
+      }
     } catch (error) {
       console.error("Error calling function:", error);
       setError("Failed to call function. Please try again.");
@@ -80,7 +91,7 @@ const CalendarPage = ({ userData, updateUserData }) => {
       <div className="logo">FreeTime</div>
       <h1 className="title">Tell us when you're free</h1>
       <button className="next-button" onClick={handleCal} disabled={isLoading}>
-        {isLoading ? "Processing..." : "Call Function"}
+        {isLoading ? "Processing..." : "Import Google Cal"}
       </button>
       {error && <p className="error-message">{error}</p>}
       {result && (

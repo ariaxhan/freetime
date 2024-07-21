@@ -29,7 +29,7 @@ const OnboardingProfile = ({ updateUserData }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="username">What's your Telegram username?</label>
+          <label htmlFor="username">What's your Discord?</label>
           <input
             type="text"
             id="username"

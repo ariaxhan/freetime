@@ -6,17 +6,18 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 
-const MyCalendar = ({ onDateSelect }) => {
-  const [events, setEvents] = useState([]);
+const MyCalendar = ({ onDateSelect, events = [] }) => {
+  const [userEvents, setUserEvents] = useState([]);
 
   useEffect(() => {
-    onDateSelect(events);
-  }, [events, onDateSelect]);
+    const allEvents = [...events, ...userEvents];
+    onDateSelect(allEvents);
+  }, [userEvents, events, onDateSelect]);
 
   const handleSelectSlot = ({ start, end }) => {
     const title = "free time!";
     if (title) {
-      setEvents((prevEvents) => [
+      setUserEvents((prevEvents) => [
         ...prevEvents,
         {
           start,
@@ -28,7 +29,7 @@ const MyCalendar = ({ onDateSelect }) => {
   };
 
   const eventStyleGetter = (event) => {
-    const backgroundColor = event.title === "Available" ? "green" : "#8C6EC7";
+    const backgroundColor = event.title === "freetime" ? "green" : "#8C6EC7";
     const style = {
       backgroundColor,
       borderRadius: "0px",
@@ -42,12 +43,14 @@ const MyCalendar = ({ onDateSelect }) => {
     };
   };
 
+  const allEvents = [...events, ...userEvents];
+
   return (
     <div style={{ height: 800 }}>
       <Calendar
         selectable
         localizer={localizer}
-        events={events}
+        events={allEvents}
         defaultView="week"
         views={["week", "day"]}
         defaultDate={new Date()}

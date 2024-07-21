@@ -8,7 +8,7 @@ const FinalPage = () => {
       <div className="thank-you-content">
         <h1 className="thank-you-title">Thanks!</h1>
         <p className="thank-you-message">
-          Check your Telegram for your next FreeTime social gathering!
+          Check your Discord for your next FreeTime social gathering!
         </p>
       </div>
     </div>

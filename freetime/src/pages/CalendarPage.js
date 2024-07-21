@@ -91,7 +91,7 @@ const CalendarPage = ({ userData, updateUserData }) => {
       <div className="logo">FreeTime</div>
       <h1 className="title">Tell us when you're free</h1>
       <button className="next-button" onClick={handleCal} disabled={isLoading}>
-        {isLoading ? "Processing..." : "Import Google Cal"}
+        {isLoading ? "Processing..." : "Check your Google Cal"}
       </button>
       {error && <p className="error-message">{error}</p>}
       {result && (

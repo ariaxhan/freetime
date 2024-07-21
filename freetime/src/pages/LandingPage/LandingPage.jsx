@@ -12,7 +12,9 @@ const LandingPage = () => {
   return (
     <div className="landing-page">
       <div className="content">
-        <div className="logo">FreeTime</div>
+        <a href="/" className="logo-link">
+          <div className="logo">FreeTime</div>
+        </a>
         <h1>
           Plan less, connect more,
           <br />

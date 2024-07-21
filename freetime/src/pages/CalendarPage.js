@@ -88,7 +88,9 @@ const CalendarPage = ({ userData, updateUserData }) => {
 
   return (
     <div className="onboarding-profile">
-      <div className="logo">FreeTime</div>
+      <a href="/" className="logo-link">
+        <div className="logo">FreeTime</div>
+      </a>
       <h1 className="title">Tell us when you're free</h1>
       <button className="next-button" onClick={handleCal} disabled={isLoading}>
         {isLoading ? "Processing..." : "Check your Google Cal"}

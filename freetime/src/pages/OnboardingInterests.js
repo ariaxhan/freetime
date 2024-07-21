@@ -29,7 +29,9 @@ const OnBoardingInterests = ({ updateUserData }) => {
 
   return (
     <div className="onboarding-profile">
-      <div className="logo">FreeTime</div>
+      <a href="/" className="logo-link">
+        <div className="logo">FreeTime</div>
+      </a>
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group">
           <label>What do you like to do with others?</label>

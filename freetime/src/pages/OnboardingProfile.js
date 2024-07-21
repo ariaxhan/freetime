@@ -16,7 +16,9 @@ const OnboardingProfile = ({ updateUserData }) => {
 
   return (
     <div className="onboarding-profile">
-      <div className="logo">FreeTime</div>
+      <a href="/" className="logo-link">
+        <div className="logo">FreeTime</div>
+      </a>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">What's your name?</label>

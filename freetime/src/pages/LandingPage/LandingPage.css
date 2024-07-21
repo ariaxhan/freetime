@@ -13,12 +13,15 @@ html {
 }
 
 .landing-page {
-    min-height: 100vh;
+    background-image: url("./background.png"); /* Replace with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f8f8;
-    padding: 2rem;
+    text-align: center;
 }
 
 .content {

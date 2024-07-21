@@ -1,13 +1,18 @@
-from firebase_functions import https_fn
-from firebase_admin import initialize_app, firestore
-import google.cloud.firestore
+from flask import Flask, jsonify
+from flask_cors import CORS
 from crewai import Agent, Task, Crew
 from crewai_tools import MultiOnTool
 from langchain_groq import ChatGroq
 import os
 from dotenv import load_dotenv
+from firebase_admin import credentials, initialize_app, firestore
+import google.cloud.firestore
 
-app = initialize_app()
+# Initialize Flask app
+app = Flask(__name__)
+
+# Add CORS to the app
+CORS(app)
 
 # Load environment variables
 load_dotenv()
@@ -16,20 +21,24 @@ load_dotenv()
 multion_api_key = os.getenv("MULTION_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 
+# Initialize Firebase
+cred = credentials.Certificate("./serviceAccountKey.json")
+firebase_app = initialize_app(cred)
+
 # Initialize tools and models
 multion_tool = MultiOnTool(api_key=multion_api_key, local=True)
 mixtal = ChatGroq(
     temperature=0,
-    groq_api_key=groq_api_key,
     model="mixtral-8x7b-32768",
-    verbose=True
+    verbose=True,
+    stop_sequences=['\n']
 )
 
 # Define agent
 calendar_agent = Agent(
     role="Calendar Checker",
-    goal="Find events titled 'freetime' and extract date and time",
-    backstory="I'm an AI assistant specialized in checking Google Calendar for specific events.",
+    goal="Check the calendar for blocks of free time, free time is minimum 3 hours",
+    backstory="I'm an AI assistant specialized in checking Google Calendar to find blocks of time when the user is free.",
     tools=[multion_tool],
     verbose=True,
     llm=mixtal,
@@ -37,7 +46,7 @@ calendar_agent = Agent(
 
 # Define task
 calendar_task = Task(
-    description="Look for events titled 'freetime' in the Google Calendar and extract their date and time.",
+    description="Look for free blocks of time in the Google Calendar and get their date and time. Be reasonable about it. For example, if the user has a meeting at 10am, don't suggest a block of time between 9am-10am. Don't create any events.",
     expected_output="The date and time of the 'freetime' events.",
     agent=calendar_agent,
 )
@@ -48,8 +57,8 @@ crew = Crew(
     tasks=[calendar_task],
 )
 
-@https_fn.on_request()
-def check_freetime_events(req: https_fn.Request) -> https_fn.Response:
+@app.route('/check_freetime_events', methods=['GET'])
+def check_freetime_events():
     """Check the calendar for 'freetime' events and store the results in Firestore."""
     try:
         # Run the crew to check the calendar
@@ -59,6 +68,12 @@ def check_freetime_events(req: https_fn.Request) -> https_fn.Response:
         firestore_client: google.cloud.firestore.Client = firestore.client()
         _, doc_ref = firestore_client.collection("freetime_events").add({"events": result})
 
-        return https_fn.Response(f"Freetime events found and stored with ID {doc_ref.id}. Events: {result}")
+        return jsonify({
+            "message": f"Freetime events found and stored with ID {doc_ref.id}.",
+            "events": result
+        }), 200
     except Exception as e:
-        return https_fn.Response(f"An error occurred: {str(e)}", status=500)
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)

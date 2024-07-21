@@ -1,0 +1,348 @@
+[debug] [2024-07-21T17:36:30.218Z] ----------------------------------------------------------------------
+[debug] [2024-07-21T17:36:30.220Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions --debug
+[debug] [2024-07-21T17:36:30.220Z] CLI Version:   13.12.0
+[debug] [2024-07-21T17:36:30.220Z] Platform:      darwin
+[debug] [2024-07-21T17:36:30.220Z] Node Version:  v20.15.0
+[debug] [2024-07-21T17:36:30.220Z] Time:          Sun Jul 21 2024 10:36:30 GMT-0700 (Pacific Daylight Time)
+[debug] [2024-07-21T17:36:30.220Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-21T17:36:30.258Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-21T17:36:30.258Z] > authorizing via signed-in user (ariaxhan@gmail.com)
+[debug] [2024-07-21T17:36:30.258Z] [iam] checking project freetime-9428d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-07-21T17:36:30.259Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions [none]
+[debug] [2024-07-21T17:36:30.261Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:36:30.263Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-21T17:36:30.388Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions 200
+[debug] [2024-07-21T17:36:30.388Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-21T17:36:30.389Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-07-21T17:36:30.389Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-07-21T17:36:30.543Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-07-21T17:36:30.544Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'freetime-9428d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-07-21T17:36:30.545Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d [none]
+[debug] [2024-07-21T17:36:30.814Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d 200
+[debug] [2024-07-21T17:36:30.815Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d {"projectId":"freetime-9428d","projectNumber":"205383744584","displayName":"freetime","name":"projects/freetime-9428d","resources":{"hostingSite":"freetime-9428d","realtimeDatabaseInstance":"freetime-9428d-default-rtdb","storageBucket":"freetime-9428d.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_2abdd5bd-7b21-4af9-afe7-b01e4841da85"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-07-21T17:36:30.816Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-07-21T17:36:30.816Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:36:30.817Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-07-21T17:36:30.817Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:36:30.818Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com [none]
+[debug] [2024-07-21T17:36:30.818Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:36:30.818Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com [none]
+[debug] [2024-07-21T17:36:30.818Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:36:31.245Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com 200
+[debug] [2024-07-21T17:36:31.245Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-07-21T17:36:31.247Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com 200
+[debug] [2024-07-21T17:36:31.247Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-07-21T17:36:31.248Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com 200
+[debug] [2024-07-21T17:36:31.248Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-07-21T17:36:31.259Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com 200
+[debug] [2024-07-21T17:36:31.259Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-07-21T17:36:31.260Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig [none]
+[debug] [2024-07-21T17:36:31.608Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig 200
+[debug] [2024-07-21T17:36:31.608Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig {"projectId":"freetime-9428d","databaseURL":"https://freetime-9428d-default-rtdb.firebaseio.com","storageBucket":"freetime-9428d.appspot.com","locationId":"us-central"}
+[debug] [2024-07-21T17:36:31.608Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs [none]
+[debug] [2024-07-21T17:36:31.791Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs 200
+[debug] [2024-07-21T17:36:31.792Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs {}
+[debug] [2024-07-21T17:36:31.793Z] Customer code is not Node
+[debug] [2024-07-21T17:36:31.793Z] Validating python source
+[debug] [2024-07-21T17:36:31.793Z] Building python source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-07-21T17:36:31.794Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-07-21T17:36:31.799Z] Running command with virtualenv: command=., args=["\"/Users/ariahan/Desktop/code/freetime/functions/venv/bin/activate\"","&&","python3.12","-c","\"import firebase_functions; import os; print(os.path.dirname(firebase_functions.__file__))\""]
+[debug] [2024-07-21T17:36:31.860Z] stdout: /Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions
+
+[debug] [2024-07-21T17:36:31.863Z] Running admin server with args: ["python3.12","\"/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py\""] and env: {"FIREBASE_CONFIG":"{\"projectId\":\"freetime-9428d\",\"databaseURL\":\"https://freetime-9428d-default-rtdb.firebaseio.com\",\"storageBucket\":\"freetime-9428d.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"freetime-9428d","GOOGLE_CLOUD_QUOTA_PROJECT":"freetime-9428d","ADMIN_PORT":"8081"} in /Users/ariahan/Desktop/code/freetime/functions
+[debug] [2024-07-21T17:36:31.863Z] Running command with virtualenv: command=., args=["\"/Users/ariahan/Desktop/code/freetime/functions/venv/bin/activate\"","&&","python3.12","\"/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py\""]
+[info]  * Serving Flask app 'serving'
+ * Debug mode: off
+
+[error] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8081
+
+[error] Press CTRL+C to quit
+
+[error] 2024-07-21 10:36:40,730 - 6184562688 - app.py-app:838 - ERROR: Exception on /__/functions.yaml [GET]
+Traceback (most recent call last):
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py", line 122, in get_functions_yaml
+    functions = get_functions()
+                ^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py", line 40, in get_functions
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/ariahan/Desktop/code/freetime/functions/main.py", line 5, in <module>
+    from crewai_tools import MultiOnTool
+ModuleNotFoundError: No module named 'crewai_tools'
+
+[error] 127.0.0.1 - - [21/Jul/2024 10:36:40] "GET /__/functions.yaml HTTP/1.1" 500 -
+2024-07-21 10:36:40,732 - 6184562688 - _internal.py-_internal:97 - INFO: 127.0.0.1 - - [21/Jul/2024 10:36:40] "GET /__/functions.yaml HTTP/1.1" 500 -
+
+[debug] [2024-07-21T17:36:40.733Z] Got response code 500; body <!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+[error] 127.0.0.1 - - [21/Jul/2024 10:36:40] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] 2024-07-21 10:36:40,734 - 6222802944 - _internal.py-_internal:97 - INFO: 127.0.0.1 - - [21/Jul/2024 10:36:40] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] /bin/sh: line 1: 13664 Terminated: 15          python3.12 "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py"
+
+[error] 
+[error] Error: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error
+[debug] [2024-07-21T17:37:27.072Z] ----------------------------------------------------------------------
+[debug] [2024-07-21T17:37:27.073Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions --debug
+[debug] [2024-07-21T17:37:27.073Z] CLI Version:   13.12.0
+[debug] [2024-07-21T17:37:27.074Z] Platform:      darwin
+[debug] [2024-07-21T17:37:27.074Z] Node Version:  v20.15.0
+[debug] [2024-07-21T17:37:27.074Z] Time:          Sun Jul 21 2024 10:37:27 GMT-0700 (Pacific Daylight Time)
+[debug] [2024-07-21T17:37:27.074Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-21T17:37:27.115Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-21T17:37:27.115Z] > authorizing via signed-in user (ariaxhan@gmail.com)
+[debug] [2024-07-21T17:37:27.118Z] [iam] checking project freetime-9428d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-07-21T17:37:27.120Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions [none]
+[debug] [2024-07-21T17:37:27.120Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:37:27.120Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-21T17:37:27.376Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions 200
+[debug] [2024-07-21T17:37:27.376Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-21T17:37:27.376Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-07-21T17:37:27.377Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-07-21T17:37:27.521Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-07-21T17:37:27.522Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'freetime-9428d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-07-21T17:37:27.524Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d [none]
+[debug] [2024-07-21T17:37:27.883Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d 200
+[debug] [2024-07-21T17:37:27.883Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d {"projectId":"freetime-9428d","projectNumber":"205383744584","displayName":"freetime","name":"projects/freetime-9428d","resources":{"hostingSite":"freetime-9428d","realtimeDatabaseInstance":"freetime-9428d-default-rtdb","storageBucket":"freetime-9428d.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_2abdd5bd-7b21-4af9-afe7-b01e4841da85"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-07-21T17:37:27.885Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-07-21T17:37:27.885Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:37:27.886Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-07-21T17:37:27.887Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:37:27.888Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com [none]
+[debug] [2024-07-21T17:37:27.888Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:37:27.889Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com [none]
+[debug] [2024-07-21T17:37:27.889Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:37:28.634Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com 200
+[debug] [2024-07-21T17:37:28.634Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-07-21T17:37:28.638Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com 200
+[debug] [2024-07-21T17:37:28.639Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-07-21T17:37:28.640Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com 200
+[debug] [2024-07-21T17:37:28.640Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-07-21T17:37:28.641Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com 200
+[debug] [2024-07-21T17:37:28.641Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-07-21T17:37:28.641Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig [none]
+[debug] [2024-07-21T17:37:29.076Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig 200
+[debug] [2024-07-21T17:37:29.076Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig {"projectId":"freetime-9428d","databaseURL":"https://freetime-9428d-default-rtdb.firebaseio.com","storageBucket":"freetime-9428d.appspot.com","locationId":"us-central"}
+[debug] [2024-07-21T17:37:29.077Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs [none]
+[debug] [2024-07-21T17:37:29.248Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs 200
+[debug] [2024-07-21T17:37:29.248Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs {}
+[debug] [2024-07-21T17:37:29.249Z] Customer code is not Node
+[debug] [2024-07-21T17:37:29.250Z] Validating python source
+[debug] [2024-07-21T17:37:29.250Z] Building python source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-07-21T17:37:29.251Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-07-21T17:37:29.260Z] Running command with virtualenv: command=., args=["\"/Users/ariahan/Desktop/code/freetime/functions/venv/bin/activate\"","&&","python3.12","-c","\"import firebase_functions; import os; print(os.path.dirname(firebase_functions.__file__))\""]
+[debug] [2024-07-21T17:37:29.330Z] stdout: /Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions
+
+[debug] [2024-07-21T17:37:29.333Z] Running admin server with args: ["python3.12","\"/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py\""] and env: {"FIREBASE_CONFIG":"{\"projectId\":\"freetime-9428d\",\"databaseURL\":\"https://freetime-9428d-default-rtdb.firebaseio.com\",\"storageBucket\":\"freetime-9428d.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"freetime-9428d","GOOGLE_CLOUD_QUOTA_PROJECT":"freetime-9428d","ADMIN_PORT":"8081"} in /Users/ariahan/Desktop/code/freetime/functions
+[debug] [2024-07-21T17:37:29.333Z] Running command with virtualenv: command=., args=["\"/Users/ariahan/Desktop/code/freetime/functions/venv/bin/activate\"","&&","python3.12","\"/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py\""]
+[info]  * Serving Flask app 'serving'
+ * Debug mode: off
+
+[error] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8081
+
+[error] Press CTRL+C to quit
+
+[error] 2024-07-21 10:37:33,490 - 6114258944 - app.py-app:838 - ERROR: Exception on /__/functions.yaml [GET]
+Traceback (most recent call last):
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py", line 122, in get_functions_yaml
+    functions = get_functions()
+                ^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py", line 40, in get_functions
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/ariahan/Desktop/code/freetime/functions/main.py", line 5, in <module>
+    from crewai_tools import MultiOnTool
+ModuleNotFoundError: No module named 'crewai_tools'
+
+[error] 127.0.0.1 - - [21/Jul/2024 10:37:33] "GET /__/functions.yaml HTTP/1.1" 500 -
+2024-07-21 10:37:33,492 - 6114258944 - _internal.py-_internal:97 - INFO: 127.0.0.1 - - [21/Jul/2024 10:37:33] "GET /__/functions.yaml HTTP/1.1" 500 -
+
+[debug] [2024-07-21T17:37:33.497Z] Got response code 500; body <!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+[error] 127.0.0.1 - - [21/Jul/2024 10:37:33] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] 2024-07-21 10:37:33,498 - 6379089920 - _internal.py-_internal:97 - INFO: 127.0.0.1 - - [21/Jul/2024 10:37:33] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] /bin/sh: line 1: 13675 Terminated: 15          python3.12 "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py"
+
+[error] 
+[error] Error: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error
+[debug] [2024-07-21T17:38:19.637Z] ----------------------------------------------------------------------
+[debug] [2024-07-21T17:38:19.638Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions --debug
+[debug] [2024-07-21T17:38:19.638Z] CLI Version:   13.12.0
+[debug] [2024-07-21T17:38:19.638Z] Platform:      darwin
+[debug] [2024-07-21T17:38:19.638Z] Node Version:  v20.15.0
+[debug] [2024-07-21T17:38:19.638Z] Time:          Sun Jul 21 2024 10:38:19 GMT-0700 (Pacific Daylight Time)
+[debug] [2024-07-21T17:38:19.638Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-21T17:38:19.676Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-21T17:38:19.676Z] > authorizing via signed-in user (ariaxhan@gmail.com)
+[debug] [2024-07-21T17:38:19.676Z] [iam] checking project freetime-9428d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-07-21T17:38:19.677Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions [none]
+[debug] [2024-07-21T17:38:19.677Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:38:19.677Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-21T17:38:19.797Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions 200
+[debug] [2024-07-21T17:38:19.797Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/freetime-9428d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-21T17:38:19.797Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-07-21T17:38:19.798Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-07-21T17:38:19.947Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-07-21T17:38:19.948Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/freetime-9428d/serviceAccounts/freetime-9428d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'freetime-9428d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-07-21T17:38:19.951Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d [none]
+[debug] [2024-07-21T17:38:20.307Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d 200
+[debug] [2024-07-21T17:38:20.308Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d {"projectId":"freetime-9428d","projectNumber":"205383744584","displayName":"freetime","name":"projects/freetime-9428d","resources":{"hostingSite":"freetime-9428d","realtimeDatabaseInstance":"freetime-9428d-default-rtdb","storageBucket":"freetime-9428d.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_2abdd5bd-7b21-4af9-afe7-b01e4841da85"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-07-21T17:38:20.310Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-07-21T17:38:20.310Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:38:20.311Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-07-21T17:38:20.311Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:38:20.312Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com [none]
+[debug] [2024-07-21T17:38:20.312Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:38:20.314Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com [none]
+[debug] [2024-07-21T17:38:20.314Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/freetime-9428d
+[debug] [2024-07-21T17:38:20.741Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com 200
+[debug] [2024-07-21T17:38:20.741Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-07-21T17:38:20.743Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com 200
+[debug] [2024-07-21T17:38:20.743Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-07-21T17:38:20.744Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com 200
+[debug] [2024-07-21T17:38:20.744Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-07-21T17:38:20.745Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com 200
+[debug] [2024-07-21T17:38:20.746Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/freetime-9428d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-07-21T17:38:20.746Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig [none]
+[debug] [2024-07-21T17:38:21.077Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig 200
+[debug] [2024-07-21T17:38:21.077Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/freetime-9428d/adminSdkConfig {"projectId":"freetime-9428d","databaseURL":"https://freetime-9428d-default-rtdb.firebaseio.com","storageBucket":"freetime-9428d.appspot.com","locationId":"us-central"}
+[debug] [2024-07-21T17:38:21.078Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs [none]
+[debug] [2024-07-21T17:38:21.230Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs 200
+[debug] [2024-07-21T17:38:21.230Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/freetime-9428d/configs {}
+[debug] [2024-07-21T17:38:21.231Z] Customer code is not Node
+[debug] [2024-07-21T17:38:21.232Z] Validating python source
+[debug] [2024-07-21T17:38:21.232Z] Building python source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-07-21T17:38:21.233Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-07-21T17:38:21.243Z] Running command with virtualenv: command=., args=["\"/Users/ariahan/Desktop/code/freetime/functions/venv/bin/activate\"","&&","python3.12","-c","\"import firebase_functions; import os; print(os.path.dirname(firebase_functions.__file__))\""]
+[debug] [2024-07-21T17:38:21.317Z] stdout: /Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions
+
+[debug] [2024-07-21T17:38:21.326Z] Running admin server with args: ["python3.12","\"/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py\""] and env: {"FIREBASE_CONFIG":"{\"projectId\":\"freetime-9428d\",\"databaseURL\":\"https://freetime-9428d-default-rtdb.firebaseio.com\",\"storageBucket\":\"freetime-9428d.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"freetime-9428d","GOOGLE_CLOUD_QUOTA_PROJECT":"freetime-9428d","ADMIN_PORT":"8081"} in /Users/ariahan/Desktop/code/freetime/functions
+[debug] [2024-07-21T17:38:21.327Z] Running command with virtualenv: command=., args=["\"/Users/ariahan/Desktop/code/freetime/functions/venv/bin/activate\"","&&","python3.12","\"/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py\""]
+[info]  * Serving Flask app 'serving'
+ * Debug mode: off
+
+[error] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8081
+
+[error] Press CTRL+C to quit
+
+[error] 2024-07-21 10:38:25,519 - 6117847040 - app.py-app:838 - ERROR: Exception on /__/functions.yaml [GET]
+Traceback (most recent call last):
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py", line 122, in get_functions_yaml
+    functions = get_functions()
+                ^^^^^^^^^^^^^^^
+  File "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py", line 40, in get_functions
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/ariahan/Desktop/code/freetime/functions/main.py", line 5, in <module>
+    from crewai_tools import MultiOnTool
+ModuleNotFoundError: No module named 'crewai_tools'
+
+[error] 127.0.0.1 - - [21/Jul/2024 10:38:25] "GET /__/functions.yaml HTTP/1.1" 500 -
+2024-07-21 10:38:25,521 - 6117847040 - _internal.py-_internal:97 - INFO: 127.0.0.1 - - [21/Jul/2024 10:38:25] "GET /__/functions.yaml HTTP/1.1" 500 -
+
+[debug] [2024-07-21T17:38:25.522Z] Got response code 500; body <!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+[error] 127.0.0.1 - - [21/Jul/2024 10:38:25] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] 2024-07-21 10:38:25,523 - 6372487168 - _internal.py-_internal:97 - INFO: 127.0.0.1 - - [21/Jul/2024 10:38:25] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] /bin/sh: line 1: 13697 Terminated: 15          python3.12 "/Users/ariahan/Desktop/code/freetime/functions/venv/lib/python3.12/site-packages/firebase_functions/private/serving.py"
+
+[error] 
+[error] Error: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error

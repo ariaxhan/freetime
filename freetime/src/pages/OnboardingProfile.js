@@ -31,7 +31,7 @@ const OnboardingProfile = ({ updateUserData }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="username">What's your Discord?</label>
+          <label htmlFor="username">What's your Discord username?</label>
           <input
             type="text"
             id="username"

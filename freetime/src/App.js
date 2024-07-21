@@ -1,37 +1,32 @@
 // src/App.js
 import React from "react";
-import { database } from "./firebase";
-import { ref, set } from "firebase/database";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MyCalendar from "./components/MyCalendar";
-import LandingPage from "./pages/LandingPage";
-
-function writeUserData(userId, name, email, imageUrl) {
-  set(ref(database, "users/" + userId), {
-    username: name,
-    email: email,
-    profile_picture: imageUrl,
-  });
-}
+import FirebaseWriter from "./components/FirebaseWriter";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import OnboardingProfile from "./pages/OnboardingProfile";
+import OnboardingInterests from "./pages/OnboardingInterests";
+import CalendarPage from "./pages/CalendarPage";
+import FinalPage from "./pages/FinalPage";
 
 function App() {
-  const handleWrite = () => {
-    writeUserData(
-      "1",
-      "John Doe",
-      "john.doe@example.com",
-      "http://example.com/john.jpg",
-    );
-  };
-
   return (
-    <div className="App">
-      {/* <h1>Write to Firebase Realtime Database</h1>
-      <button onClick={handleWrite}>Write Data</button>
-
-      <MyCalendar /> */}
-
-      <LandingPage />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/onboarding/profile" element={<OnboardingProfile />} />
+          <Route
+            path="/onboarding/interests"
+            element={<OnboardingInterests />}
+          />
+          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/final" element={<FinalPage />} />
+        </Routes>
+        {/* <FirebaseWriter />
+        <MyCalendar /> */}
+      </div>
+    </Router>
   );
 }
 

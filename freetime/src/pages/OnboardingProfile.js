@@ -1,0 +1,61 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./OnboardingProfile.css";
+
+const OnboardingProfile = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [city, setCity] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log("Form submitted:", { name, username, city });
+    // Navigate to the next page
+    navigate("/onboarding/interests");
+  };
+
+  return (
+    <div className="onboarding-profile">
+      <div className="logo">FreeTime</div>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">What's your name?</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="username">What's your Telegram username?</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="city">What city are you in?</label>
+          <input
+            type="text"
+            id="city"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="next-button">
+          Next
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default OnboardingProfile;

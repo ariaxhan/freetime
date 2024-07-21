@@ -2,6 +2,8 @@
 import React from "react";
 import { database } from "./firebase";
 import { ref, set } from "firebase/database";
+import MyCalendar from "./components/MyCalendar";
+import LandingPage from "./pages/LandingPage";
 
 function writeUserData(userId, name, email, imageUrl) {
   set(ref(database, "users/" + userId), {
@@ -23,8 +25,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Write to Firebase Realtime Database</h1>
+      {/* <h1>Write to Firebase Realtime Database</h1>
       <button onClick={handleWrite}>Write Data</button>
+
+      <MyCalendar /> */}
+
+      <LandingPage />
     </div>
   );
 }

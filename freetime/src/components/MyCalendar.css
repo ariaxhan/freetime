@@ -1,0 +1,60 @@
+/* MyCalendar.css */
+.calendar-container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.legend-item {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.legend-item span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.unavailable {
+    background-color: pink;
+}
+
+.available {
+    background-color: green;
+}
+
+.rbc-calendar {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.rbc-time-view {
+    border-top: none;
+}
+
+.rbc-day-bg {
+    background-color: #ffe6e6;
+}
+
+.rbc-event {
+    background-color: green !important;
+    border-radius: 0 !important;
+}
+
+.rbc-timeslot-group {
+    min-height: 60px; /* Adjust the height of time slots */
+}

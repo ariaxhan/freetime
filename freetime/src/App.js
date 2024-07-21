@@ -21,7 +21,7 @@ function App() {
             element={<OnboardingInterests />}
           />
           <Route path="/calendar" element={<CalendarPage />} />
-          <Route path="/final" element={<FinalPage />} />
+          <Route path="/next-step" element={<FinalPage />} />
         </Routes>
         {/* <FirebaseWriter />
         <MyCalendar /> */}

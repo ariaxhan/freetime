@@ -10,7 +10,7 @@ const MyCalendar = () => {
   const [events, setEvents] = useState([]);
 
   const handleSelectSlot = ({ start, end }) => {
-    const title = window.prompt("New Event name");
+    const title = "free time!";
     if (title)
       setEvents((prevEvents) => [
         ...prevEvents,

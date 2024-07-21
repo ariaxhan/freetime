@@ -1,17 +1,21 @@
 // MyCalendar.js
-import React, { useState } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
+import React, { useState, useEffect } from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 
-const MyCalendar = () => {
+const MyCalendar = ({ onDateSelect }) => {
   const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    onDateSelect(events);
+  }, [events, onDateSelect]);
 
   const handleSelectSlot = ({ start, end }) => {
     const title = "free time!";
-    if (title)
+    if (title) {
       setEvents((prevEvents) => [
         ...prevEvents,
         {
@@ -20,10 +24,11 @@ const MyCalendar = () => {
           title,
         },
       ]);
+    }
   };
 
   const eventStyleGetter = (event) => {
-    const backgroundColor = event.title === "Available" ? "green" : "pink";
+    const backgroundColor = event.title === "Available" ? "green" : "#8C6EC7";
     const style = {
       backgroundColor,
       borderRadius: "0px",

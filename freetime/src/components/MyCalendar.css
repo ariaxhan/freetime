@@ -1,71 +1,80 @@
 /* MyCalendar.css */
 .calendar-container {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    width: 100%;
-    max-width: 600px; /* Adjust this value as needed */
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    min-height: 1000px; /* Adjust this value based on your content */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  width: 100%;
+  max-width: 600px; /* Adjust this value as needed */
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 1000px; /* Adjust this value based on your content */
 }
 
 .header {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .legend {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .legend-item {
-    margin: 0 10px;
-    display: flex;
-    align-items: center;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
 }
 
 .legend-item span {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
 }
 
 .unavailable {
-    background-color: pink;
+  background-color: pink;
 }
 
 .available {
-    background-color: green;
+  background-color: green;
 }
 
 .rbc-calendar {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 0;
 }
 
 .rbc-time-view {
-    border-top: none;
+  border-top: none;
 }
 
 .rbc-day-bg {
-    background-color: #ffe6e6;
+  background-color: #ffe6e6;
 }
 
 .rbc-event {
-    background-color: green !important;
-    border-radius: 0 !important;
+  background-color: green !important;
+  border-radius: 0 !important;
 }
 
 .rbc-timeslot-group {
-    min-height: 60px; /* Adjust the height of time slots */
+  min-height: 60px; /* Adjust the height of time slots */
+}
+
+.rbc-day-slot .rbc-events-container {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  margin-right: 0px;
+  top: 0;
 }

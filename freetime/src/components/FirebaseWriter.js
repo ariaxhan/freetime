@@ -5,7 +5,10 @@ import { ref, set } from "firebase/database";
 
 const FirebaseWriter = () => {
   const writeUserData = (userId, name, email, imageUrl) => {
-    set(ref(database, "users/" + userId), {
+    const databaseURL = "https://freetime-9428d-default-rtdb.firebaseio.com/";
+    const dbRef = ref(database, `${databaseURL}users/${userId}`);
+
+    set(dbRef, {
       username: name,
       email: email,
       profile_picture: imageUrl,

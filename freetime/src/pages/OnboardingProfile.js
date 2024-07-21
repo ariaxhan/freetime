@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./OnboardingProfile.css";
 
-const OnboardingProfile = () => {
+const OnboardingProfile = ({ updateUserData }) => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -10,9 +10,7 @@ const OnboardingProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", { name, username, city });
-    // Navigate to the next page
+    updateUserData("profile", { name, username, city });
     navigate("/onboarding/interests");
   };
 

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./OnboardingInterests.css";
 
-const OnBoardingInterests = () => {
+const OnBoardingInterests = ({ updateUserData }) => {
   const [selectedInterests, setSelectedInterests] = useState([]);
   const navigate = useNavigate();
-
   const interests = [
     { name: "Getting Food", icon: "🍔" },
     { name: "Coffee", icon: "☕" },
@@ -24,7 +23,7 @@ const OnBoardingInterests = () => {
   };
 
   const handleNext = () => {
-    // You can add any logic here to save the selected interests if needed
+    updateUserData("interests", selectedInterests);
     navigate("/calendar");
   };
 

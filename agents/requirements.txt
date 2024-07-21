@@ -1,0 +1,6 @@
+firebase-functions
+firebase-admin
+crewai
+crewai_tools
+langchain_groq
+python-dotenv

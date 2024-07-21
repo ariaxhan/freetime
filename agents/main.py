@@ -1,34 +1,31 @@
+from firebase_functions import https_fn
+from firebase_admin import initialize_app, firestore
+import google.cloud.firestore
 from crewai import Agent, Task, Crew
 from crewai_tools import MultiOnTool
 from langchain_groq import ChatGroq
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from a .env file if present
+app = initialize_app()
+
+# Load environment variables
 load_dotenv()
 
 # Retrieve environment variables
 multion_api_key = os.getenv("MULTION_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 
-# Check if the environment variables are set and raise an error if not
-if not multion_api_key:
-    raise ValueError("The environment variable 'MULTION_API_KEY' is not set.")
-
-if not groq_api_key:
-    raise ValueError("The environment variable 'GROQ_API_KEY' is not set.")
-
-# Initialize the tool from a MultiOn Tool
+# Initialize tools and models
 multion_tool = MultiOnTool(api_key=multion_api_key, local=True)
-
-# Initialize the ChatGroq object
 mixtal = ChatGroq(
     temperature=0,
     groq_api_key=groq_api_key,
     model="mixtral-8x7b-32768",
     verbose=True
 )
-# Define the agent
+
+# Define agent
 calendar_agent = Agent(
     role="Calendar Checker",
     goal="Find events titled 'freetime' and extract date and time",
@@ -38,10 +35,10 @@ calendar_agent = Agent(
     llm=mixtal,
 )
 
-# Define the task
+# Define task
 calendar_task = Task(
     description="Look for events titled 'freetime' in the Google Calendar and extract their date and time.",
-    expected_output="The date and time of the 'freetime' event.",
+    expected_output="The date and time of the 'freetime' events.",
     agent=calendar_agent,
 )
 
@@ -51,16 +48,17 @@ crew = Crew(
     tasks=[calendar_task],
 )
 
-# Main function to run the crew
-def main():
+@https_fn.on_request()
+def check_freetime_events(req: https_fn.Request) -> https_fn.Response:
+    """Check the calendar for 'freetime' events and store the results in Firestore."""
     try:
-        # Kickoff the process
+        # Run the crew to check the calendar
         result = crew.kickoff()
-        print("Results:")
-        print(result)
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
 
-# Run the main function
-if __name__ == "__main__":
-    main()
+        # Store the result in Firestore
+        firestore_client: google.cloud.firestore.Client = firestore.client()
+        _, doc_ref = firestore_client.collection("freetime_events").add({"events": result})
+
+        return https_fn.Response(f"Freetime events found and stored with ID {doc_ref.id}. Events: {result}")
+    except Exception as e:
+        return https_fn.Response(f"An error occurred: {str(e)}", status=500)

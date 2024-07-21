@@ -10,8 +10,13 @@ const FinalPage = () => {
       <div className="thank-you-content">
         <h1 className="thank-you-title">Thanks!</h1>
         <p className="thank-you-message">
-          Check your Discord for your next FreeTime social gathering!
+          Now just join our Discord server and you'll automatically added to
+          your next FreeTime social gathering!
         </p>
+        <a href="https://discord.gg/zuPTr2C5dz" className="next-button">
+          Join Discord Server
+        </a>
+        <br /> <br /> <br />
       </div>
     </div>
   );

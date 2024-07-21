@@ -35,3 +35,7 @@
     color: #666;
     line-height: 1.5;
 }
+
+.next-button {
+    text-decoration: none;
+}

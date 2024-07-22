@@ -1,0 +1,26 @@
+{
+    "title": "CreateChannelAndInviteUsersParams",
+    "type": "object",
+    "properties": {
+      "guild_id": {
+        "type": "integer",
+        "description": "The ID of the Discord guild (server) where the channel will be created."
+      },
+      "channel_name": {
+        "type": "string",
+        "description": "The name of the channel to be created."
+      },
+      "usernames": {
+        "type": "array",
+        "description": "A list of usernames to invite to the channel.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "message": {
+        "type": "string",
+        "description": "The message to send in the group chat after the channel is created and users are invited."
+      }
+    },
+    "required": ["guild_id", "channel_name", "usernames", "message"]
+  }

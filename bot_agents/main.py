@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-#agentops.init(<INSERT YOUR API KEY HERE>)
+agentops.init(os.getenv('AGENTOPS_API_TOKEN'))
 
 
 data_fetch_tool = DataFetchTool()

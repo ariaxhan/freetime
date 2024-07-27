@@ -1,0 +1,11 @@
+web_search_task:
+  description: >
+    Perform a web search for the given {query}.
+  expected_output: >
+    A list of relevant web search results with titles and URLs.
+
+geolocation_research_task:
+  description: >
+    Find the exact address of {location}.
+  expected_output: >
+    The exact address of {location}.

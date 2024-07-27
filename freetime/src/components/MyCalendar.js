@@ -1,56 +1,53 @@
 // MyCalendar.js
 import moment from "moment";
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 
-const MyCalendar = ({ onDateSelect, events = [] }) => {
-  const [userEvents, setUserEvents] = useState([]);
+const MyCalendar = ({ onDateSelect, initialEvents = [] }) => {
+  const [userEvents, setUserEvents] = useState(initialEvents);
 
-  useEffect(() => {
-    const allEvents = [...events, ...userEvents];
-    onDateSelect(allEvents);
-  }, [userEvents, events, onDateSelect]);
+  const handleSelectSlot = useCallback(
+    ({ start, end }) => {
+      const title = "free time!";
+      setUserEvents((prevEvents) => {
+        const newEvents = [
+          ...prevEvents,
+          {
+            start,
+            end,
+            title,
+          },
+        ];
+        onDateSelect(newEvents);
+        return newEvents;
+      });
+    },
+    [onDateSelect],
+  );
 
-  const handleSelectSlot = ({ start, end }) => {
-    const title = "free time!";
-    if (title) {
-      setUserEvents((prevEvents) => [
-        ...prevEvents,
-        {
-          start,
-          end,
-          title,
-        },
-      ]);
-    }
-  };
-
-  const eventStyleGetter = (event) => {
+  const eventStyleGetter = useCallback((event) => {
     const backgroundColor = event.title === "freetime" ? "green" : "#8C6EC7";
-    const style = {
-      backgroundColor,
-      borderRadius: "0px",
-      opacity: 0.8,
-      color: "white",
-      border: "0px",
-      display: "block",
-    };
     return {
-      style,
+      style: {
+        backgroundColor,
+        borderRadius: "0px",
+        opacity: 0.8,
+        color: "white",
+        border: "0px",
+        display: "block",
+      },
     };
-  };
-
-  const allEvents = [...events, ...userEvents];
+  }, []);
 
   return (
     <div style={{ height: 800 }}>
       <Calendar
         selectable
         localizer={localizer}
-        events={allEvents}
+        events={userEvents}
         defaultView="week"
         views={["week", "day"]}
         defaultDate={new Date()}

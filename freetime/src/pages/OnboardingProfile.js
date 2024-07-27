@@ -7,10 +7,11 @@ const OnboardingProfile = ({ updateUserData }) => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [city, setCity] = useState("");
+  const [age, setAge] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateUserData("profile", { name, username, city });
+    updateUserData("profile", { name, username, city, age });
     navigate("/onboarding/interests");
   };
 
@@ -47,6 +48,16 @@ const OnboardingProfile = ({ updateUserData }) => {
             id="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="age">How old are you?</label>
+          <input
+            type="number"
+            id="age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
             required
           />
         </div>

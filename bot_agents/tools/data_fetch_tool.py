@@ -4,6 +4,12 @@ from supabase import create_client, Client
 from datetime import datetime
 import json
 from pydantic import Field
+from dotenv import load_dotenv
+from pathlib import Path
+
+# Load environment variables from .env file located one level higher
+env_path = Path(__file__).resolve().parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
 class DataFetchTool(BaseTool):
     name = "Data Fetch Tool"
@@ -13,23 +19,17 @@ class DataFetchTool(BaseTool):
     key: str = Field(..., description="Supabase API key")
     supabase: Client = Field(default=None)
 
-    @classmethod
-    def from_env(cls):
-        url = os.environ.get("SUPABASE_URL")
-        key = os.environ.get("SUPABASE_KEY")
-        if not url or not key:
-            raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set in environment variables")
-        return cls(url=url, key=key)
 
     def __init__(self, **data):
         super().__init__(**data)
-        self.supabase = create_client(self.url, self.key)
+        url = os.environ.get("SUPABASE_URL")
+        key = os.environ.get("SUPABASE_KEY")
+        self.supabase = create_client(url, key)
 
     def _run(self, table: str = 'users') -> dict:
         try:
             response = self.supabase.table(table).select('*').execute()
             users_data = response.data
-
             availability_data = {"users": []}
             interests_data = {"users": []}
 

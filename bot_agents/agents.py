@@ -1,5 +1,6 @@
 import os
 from crewai import Agent
+from tools.discord_message_tool import DiscordMessageTool
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 
@@ -10,6 +11,7 @@ llama_groq = ChatGroq(
     groq_api_key=os.getenv("GROQ_API_KEY"),
     model="mixtral-8x7b-32768",
 )
+discord_message_tool_instance = DiscordMessageTool()
 # agents
 
 availability_finder = Agent(
@@ -33,16 +35,17 @@ event_suggester = Agent(
     "Creates fun event ideas by understanding personal interests and finding things to do that all attendees will find fun."
   ),
   llm=llama_groq,
-  max_iter=2
+  max_iter=3
 )
 
-json_converter_agent = Agent(
-    role='Convert raw text to JSON',
-    goal='Converts the text of plans into individual json objects that specifies the parameters for a function call that makes a group chat for all users.',
-    verbose=True,
+message_agent = Agent(
+    role='Message Users',
+    goal='Using the events and available groups, message the users using your discord bot tool.',
     backstory=(
-        "A professional converter of raw text to JSON in specified formats when given a format."
+        "Agent is experienced in messaging users with fun plans and ideas."
     ),
+    tools=[discord_message_tool_instance],
     llm=llama_groq,
-    max_iter=2
+    max_iter=2,
+    verbose=True,
 )

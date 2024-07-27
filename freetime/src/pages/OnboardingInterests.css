@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 .onboarding-profile {
+    background-image: url("./background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: "Varela Round", sans-serif;
     min-height: 100vh;
     display: flex;

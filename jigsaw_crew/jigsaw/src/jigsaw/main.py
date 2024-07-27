@@ -19,20 +19,19 @@ def run():
     """
     Run the crew.
     """
-    inputs = {
-        'query': 'Lands end in San Francisco'
-    }
-    JigsawCrew().crew().kickoff(inputs=inputs)
+    location_query = 'Golden Gate Bridge in San Francisco'
+    crew_instance = JigsawCrew()
+    result = crew_instance.run_tasks(location_query)
+    print(result)
 
 def train():
     """
     Train the crew for a given number of iterations.
     """
-    inputs = {
-        "query": "Golden Gate Bridge in San Francisco"
-    }
+    location_query = 'Golden Gate Bridge in San Francisco'
     try:
-        JigsawCrew().crew().train(n_iterations=int(sys.argv[2]), inputs=inputs)
+        crew_instance = JigsawCrew()
+        crew_instance.train(n_iterations=int(sys.argv[2]), inputs={'location': location_query, 'query': location_query})
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
@@ -42,7 +41,8 @@ def replay():
     Replay the crew execution from a specific task.
     """
     try:
-        JigsawCrew().crew().replay(task_id=sys.argv[2])
+        crew_instance = JigsawCrew()
+        crew_instance.replay(task_id=sys.argv[2])
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")

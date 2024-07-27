@@ -1,11 +1,17 @@
+geolocation_research_task:
+  description: >
+    Find the exact address of {location}.
+  expected_output: >
+    The exact address of {location}.
+
 web_search_task:
   description: >
     Perform a web search for the given {query}.
   expected_output: >
     A list of relevant web search results with titles and URLs.
 
-geolocation_research_task:
+summary_task:
   description: >
-    Find the exact address of {location}.
+    Summarize the results for the location and query.
   expected_output: >
-    The exact address of {location}.
+    A markdown file containing the location and the most important parts of the search results.

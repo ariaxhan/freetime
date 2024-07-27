@@ -30,7 +30,7 @@ class SummaryTool(BaseTool):
 
                 # Write the summary to a markdown file
                 with open(self.output_file, 'w') as f:
-                    f.write(f"# Summary for {self.location}\n\n{summary}")
+                    f.write(f"# Summary\n\n{summary}")
 
                 return summary
             else:

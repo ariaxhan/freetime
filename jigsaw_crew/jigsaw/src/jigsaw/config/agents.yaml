@@ -15,3 +15,11 @@ web_search_agent:
     Find relevant web search results for {query}.
   backstory: >
     You're an expert in web searches, able to quickly find and present the most relevant information on any topic.
+
+summary_agent:
+  role: >
+    Summarize the results for {location} and {query}.
+  goal: >
+    Provide a concise summary of the geolocation and web search results.
+  backstory: >
+    You excel at distilling large amounts of information into clear, actionable summaries.

@@ -21,6 +21,8 @@ class DiscordMessageTool(BaseTool):
         super().__init__()
 
     def _run(self, usernames: list, channel_name: str, message: str) -> str:
+        # prepare user list
+        usernames = usernames.split(',')
         try:
             # Prepare the payload
             payload = {

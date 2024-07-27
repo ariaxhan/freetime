@@ -1,12 +1,16 @@
 import requests
-import json
+import json, os
 from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 
 class Geolocation(BaseTool):
-    name: str
-    description: str
-    api_key: str
+    name: str = "Geolocation tool"
+    description: str = "Finds the geolocation"
+    api_key: str = os.environ.get('JIGSAW_KEY')
+
+    def __init__(self):
+        super().__init__()
+        self.api_key = os.environ.get('JIGSAW_KEY')
 
     def _run(self, argument: str) -> str:
         url = f"https://api.jigsawstack.com/v1/geo/search?search_value={argument}"

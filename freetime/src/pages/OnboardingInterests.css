@@ -83,3 +83,17 @@ label {
 .next-button:hover {
     background-color: #6a4caf;
 }
+
+.add-button {
+    background-color: white;
+    color: #6a4caf;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%;
+    hover: #6a4caf;
+    effect: ease;
+}

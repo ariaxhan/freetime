@@ -1,6 +1,7 @@
 import os
 from crewai import Agent
 from tools.discord_message_tool import DiscordMessageTool
+from tools.geolocation import Geolocation
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 
@@ -9,14 +10,15 @@ load_dotenv()
 llama_groq = ChatGroq(
     temperature=0,
     groq_api_key=os.getenv("GROQ_API_KEY"),
-    model="mixtral-8x7b-32768",
+    model="llama-3.1-70b-versatile",
 )
 discord_message_tool_instance = DiscordMessageTool()
+geolocation_tool = Geolocation()
 # agents
 
 availability_finder = Agent(
-  role='Find Availability',
-  goal='Finds times that multiple people are available and summarize when people are available, use the names given.',
+  role='Find availability for groups',
+  goal='Finds times that multiple people are available as a group, use the names given.',
   verbose=True,
   memory=True,
   backstory=(
@@ -34,6 +36,7 @@ event_suggester = Agent(
   backstory=(
     "Creates fun event ideas by understanding personal interests and finding things to do that all attendees will find fun."
   ),
+  tools=[geolocation_tool],
   llm=llama_groq,
   max_iter=3
 )

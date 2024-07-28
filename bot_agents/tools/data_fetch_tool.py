@@ -32,6 +32,7 @@ class DataFetchTool(BaseTool):
             users_data = response.data
             availability_data = {"users": []}
             interests_data = {"users": []}
+            usernames = {"users": []}
 
             for user_info in users_data:
                 if user_info.get("username") != "FreeTime":  # Skip the FreeTime user
@@ -40,7 +41,6 @@ class DataFetchTool(BaseTool):
                         "name": user_info.get("name", ""),
                         "username": user_info.get("username", ""),
                         "city": user_info.get("city", ""),
-                        "age": user_info.get("age", ""),
                         "availability": []
                     }
                     for date in user_info.get("availableDates", []):
@@ -57,16 +57,23 @@ class DataFetchTool(BaseTool):
                     # Process interests
                     interests_user = {
                         "name": user_info.get("name", ""),
-                        "username": user_info.get("username", ""),
                         "city": user_info.get("city", ""),
                         "age": user_info.get("age", ""),
                         "interests": user_info.get("interests", [])
                     }
                     interests_data["users"].append(interests_user)
 
+                    # Process usernames
+                    username_user = {
+                        "name": user_info.get("name", ""),
+                        "username": user_info.get("username", "")
+                    }
+                    usernames["users"].append(username_user)
+
             return {
                 "availability_data": json.dumps(availability_data),
-                "interests_data": json.dumps(interests_data)
+                "interests_data": json.dumps(interests_data),
+                "username_data": json.dumps(usernames)
             }
         except Exception as e:
             return f"An error occurred while fetching and processing data: {e}"

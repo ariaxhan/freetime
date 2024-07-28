@@ -18,35 +18,41 @@ data_fetch_tool = DataFetchTool()
 discord_message_tool_instance = DiscordMessageTool()
 geolocation_tool = Geolocation()
 fetched_data = data_fetch_tool._run()
-
 availability_data = json.loads(fetched_data["availability_data"])
 interests_data = json.loads(fetched_data["interests_data"])
+usernames = json.loads(fetched_data["username_data"])
 
 availability_task = Task(
     description=(
-        "Find available times for events based on the provided schedule data. Using this schedule: \n{schedule}"
+        "Find available times for events based on the provided schedule data. Using this schedule: \n{schedule}\n\n"
+        "Group the users based on their availability and mutual interests, the user interests are here: \n{interests}"
+        "Make groups of about 4 users that have similar availability and give the common interests for each group."
     ),
-    expected_output='A list of different groups of users that are all available at the same time, this information will be passed to an agent to find interesting events for groups to do.',
+    expected_output='A list of different groups of users with their specified mutual interests.',
     agent=availability_finder
 )
 
 event_suggestion_task = Task(
     description=(
-        "Suggest events based on the provided availability data and the personal interests given here: \n {interests} \n\n."
-        "You can use the geolocation tool to look up the exact location of the events that you suggest."
+        "Suggest events based on the provided availability data and the personal interests from the previous task near the locations of the users."
+ #       "You can use the geolocation tool to look up the exact location of the events that you suggest, the geolocation tool takes a location name and returns an address."
+        "Make specific plans for groups of users that the groups would enjoy based on their interests."
+        "Only suggest very specific locations and times for each group, specific restaurants or hiking locations."
     ),
-    expected_output='A list of events for  events in markdown format.',
+    expected_output='A list of events for available user groups with similar interests at a specific location.',
     agent=event_suggester,
+ #   tools=[geolocation_tool],
     context=[availability_task]
 )
 
 discord_message_task = Task(
     description=(
         "Message the users in a suggested group using the discord bot tool."
-        "The events, location, and information are provided by the previous task."
         "Send the group an inviting message with a simple channel name that describes the event."
+        "Use these usernames in the tool to message the users on Discord: \n{usernames}"
+        "Do not under any circumstances send a message to users asking about their interests, only send a message about specific plans with a specific location and time. If you send anything general a child will die. This is a matter of safety."
     ),
-    expected_output= "Use the DiscordMessageTool to send a message to the right users.",
+    expected_output= "Use the DiscordMessageTool to send a message to the right users with a message of the specific plan.",
     agent=message_agent,
     context=[event_suggestion_task],
     tools=[discord_message_tool_instance],
@@ -59,7 +65,7 @@ crew = Crew(
     process=Process.sequential
 )
 
-result = crew.kickoff(inputs={'schedule': availability_data, 'interests': interests_data})
+result = crew.kickoff(inputs={'schedule': availability_data, 'interests': interests_data, 'usernames': usernames})
 
 # ensure result is in JSON format
 #client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
